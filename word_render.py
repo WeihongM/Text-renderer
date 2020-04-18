@@ -197,23 +197,23 @@ class WordRenderer(object):
         - http://stackoverflow.com/questions/601776/what-do-the-blend-modes-in-pygame-mean
         - http://stackoverflow.com/questions/5605174/python-pil-function-to-divide-blend-two-images
         """
-        # fis = self.fillimstate.get_sample(arr)
+        fis = self.fillimstate.get_sample(arr)
 
-        # image = fis['image']
-        # blend_mode = fis['blend_mode']
-        # blend_amount = fis['blend_amount']
-        # blend_order = fis['blend_order']
+        image = fis['image']
+        blend_mode = fis['blend_mode']
+        blend_amount = fis['blend_amount']
+        blend_order = fis['blend_order']
 
         # change alpha of the image
-        # if blend_amount > 0:
-        #     if blend_order:
-        #         #image[...,1] *= blend_amount
-        #         image[...,1] = (image[...,1]*blend_amount).astype(int)
-        #         arr = grey_blit(image, arr, blend_mode=blend_mode)
-        #     else:
-        #         #arr[...,1] *= (1 - blend_amount)
-        #         arr[...,1] = (arr[...,1]*(1-blend_amount)).astype(int)
-        #         arr = grey_blit(arr, image, blend_mode=blend_mode)
+        if blend_amount > 0:
+            if blend_order:
+                #image[...,1] *= blend_amount
+                image[...,1] = (image[...,1]*blend_amount).astype(int)
+                arr = grey_blit(image, arr, blend_mode=blend_mode)
+            else:
+                #arr[...,1] *= (1 - blend_amount)
+                arr[...,1] = (arr[...,1]*(1-blend_amount)).astype(int)
+                arr = grey_blit(arr, image, blend_mode=blend_mode)
 
         # pyplot.imshow(image[...,0], cmap=cm.Greys_r)
         # pyplot.show()
@@ -482,8 +482,6 @@ class WordRenderer(object):
             return None
 
         # add per-surface distortions
-        import pdb; pdb.set_trace()
-
         l1_arr = self.surface_distortions(l1_arr)
         if fs['border']:
             l2_arr = self.surface_distortions(l2_arr)
@@ -513,9 +511,6 @@ class WordRenderer(object):
 
         # add global distortions
         canvas = self.global_distortions(canvas)
-
-        cv2.imwrite("1.jpg", canvas)
-        import pdb; pdb.set_trace()
 
         # noise removal
         canvas = ndimage.filters.median_filter(canvas, size=(3,3))

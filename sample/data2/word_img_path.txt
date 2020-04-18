@@ -1,0 +1,4 @@
+sample/data2/ReCTS/1.jpg
+sample/data2/ReCTS/5.jpg
+sample/data2/ReCTS/6.jpg
+sample/data2/ReCTS/13.jpg

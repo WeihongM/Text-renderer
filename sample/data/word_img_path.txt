@@ -1,0 +1,4 @@
+sample/data/word/1.jpg
+sample/data/word/2.jpg
+sample/data/word/3.jpg
+sample/data/word/4.jpg

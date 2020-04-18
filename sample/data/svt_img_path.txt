@@ -1,0 +1,4 @@
+sample/data/SVT/00_00.jpg
+sample/data/SVT/00_01.jpg
+sample/data/SVT/00_02.jpg
+sample/data/SVT/00_03.jpg
